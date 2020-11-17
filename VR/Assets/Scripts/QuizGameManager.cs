@@ -48,13 +48,22 @@ public class QuizGameManager : MonoBehaviour
     private GameObject buttonsGameObject = null;
 
     [SerializeField]
+    private GameObject quizStartUI = null;
+
+    [SerializeField]
+    private GameObject quizGameUI = null;
+
+    [SerializeField]
     private string endText = null;
 
     private int score = 0;
 
     //Check if unasweredQuestions is null or there is 0 unaswered questions if this returns true then get questions from questions (public Question[] questions;) then select question randomly
-    void Start()
+    public void StartGame()
     {
+        quizStartUI.SetActive(false);
+        quizGameUI.SetActive(true);
+
         if(unansweredQuestions == null || unansweredQuestions.Count == 0)
         {
             unansweredQuestions = questions.ToList<Question>();
